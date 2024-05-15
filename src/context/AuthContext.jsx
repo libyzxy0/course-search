@@ -1,18 +1,21 @@
 import React, { useState, createContext, useEffect } from "react";
 import { account } from "@/config/appwrite";
-import { OAuthProvider } from "appwrite";
+import { OAuthProvider, ID } from "appwrite";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
-
+  const [loading, setLoading] = useState(true);
   const fetchUserData = async () => {
     try {
+      setLoading(true);
       const userData = await account.get();
       setUser(userData);
     } catch (error) {
       console.log("Not logged in");
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -33,13 +36,14 @@ export const AuthProvider = ({ children }) => {
 
   const signup = async (firstName, lastName, email, password) => {
     try {
-      const randomID = "csid-" + Math.random().toString(36).substring(2, 18);
+      const randomID = "csid-" + ID.unique();
       const result = await account.create(
         randomID,
         email,
         password,
-        `${firstName}:${lastName}`,
+        `${firstName} ${lastName}`,
       );
+      await login(email, password);
       console.log(result);
       setError("");
     } catch (error) {
@@ -73,7 +77,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ error, user, login, signup, logout, googleSignIn }}
+      value={{ error, user, login, signup, logout, googleSignIn, loading }}
     >
       {children}
     </AuthContext.Provider>

@@ -7,7 +7,7 @@ import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
 import Dashboard from "@/pages/private/Dashboard";
 import Survey from "@/pages/private/Survey";
-
+import PrivateRoutes from '@/utils/private-routes.jsx'
 function App() {
   return (
     <>
@@ -16,8 +16,13 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/survey" element={<Survey />} />
+          
+          {/*Private Routes */}
+          <Route element={<PrivateRoutes />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/survey" element={<Survey />} />
+          </Route>
+          
         </Routes>
       </AuthProvider>
     </>

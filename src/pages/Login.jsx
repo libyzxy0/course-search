@@ -3,12 +3,14 @@ import toast, { Toaster } from "react-hot-toast";
 import loginmockup from "@/assets/4957412_Mobile-login.svg";
 import { useState } from "react";
 import { Eye, EyeOff, Loader } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 
 const Login = () => {
   const { googleSignIn, login, user, error } = useAuth();
-
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get("loc")
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,6 +26,7 @@ const Login = () => {
         toast.success("Successfully logged in as " + u.providerUid);
         setPassword("");
         setEmail("");
+        navigate(`/${search}`);
       } else {
         toast.error("Login failed check your credentials [2771]");
       }

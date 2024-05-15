@@ -2,14 +2,18 @@ import React, { useState, useEffect } from "react";
 import { data } from "@/data/example-data";
 import completedmockup from "@/assets/10946094_4611763.svg";
 import { useNavigate } from "react-router-dom";
+import edumockup from "@/assets/mockup-freepik-education.jpg";
+import { useAuth } from '@/hooks/useAuth'
 
 const Survey = () => {
+  const { user } = useAuth();
   const navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [isFinished, setFinished] = useState(false);
   const [collected, setCollected] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [surveyStarted, setSurveyStarted] = useState(false); // New state to track if the survey has started
 
   useEffect(() => {
     const focusableElement = document.querySelector(".focusable");
@@ -17,6 +21,10 @@ const Survey = () => {
       focusableElement.focus();
     }
   }, [currentQuestionIndex, isFinished]);
+
+  const handleStartSurvey = () => {
+    setSurveyStarted(true);
+  };
 
   const handleChoiceSelect = (choice) => {
     const currentQuestion = data[currentQuestionIndex];
@@ -100,7 +108,7 @@ const Survey = () => {
               <button
                 key={choice}
                 onClick={() => handleChoiceSelect(choice)}
-                className={`px-6 w-full py-2.5 rounded-lg border-none font-medium mt-3 bg-emerald-400 text-gray-700 hover:bg-emerald-500 transition-all duration-300 ${index === 0 ? "focusable" : ""}`}
+                className={`text-white px-6 w-full py-2.5 rounded-lg border-none font-medium mt-3 bg-emerald-400 text-gray-700 hover:bg-emerald-500 transition-all duration-300 ${index === 0 ? "focusable" : ""}`}
               >
                 {choice}
               </button>
@@ -128,9 +136,31 @@ const Survey = () => {
     );
   };
 
+  const renderGetStarted = () => {
+    return (
+      <div className="w-full flex text-center justify-center items-center flex-col mx-6">
+      <div className="w-72">
+            <img src={edumockup} alt="Mockup image from freepik" />
+          </div>
+        <h1 className="text-gray-700 font-bold text-3xl mx-2 mt-5">
+          Hello {(user.name.split(" "))[0]}! Ready?
+        </h1>
+        <p className="text-gray-600 mt-3">
+          Let us know what will be the course suitable for you by answering this servey!
+        </p>
+        <button
+          onClick={handleStartSurvey}
+          className="px-6 w-full py-2.5 rounded-lg border-none font-medium mt-3 bg-emerald-400 text-gray-700 hover:bg-emerald-500 transition-all duration-300 text-white mt-5"
+        >
+          Im Ready!
+        </button>
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-[85vh] w-full flex justify-center items-center">
-      {renderQuestion()}
+      {surveyStarted ? renderQuestion() : renderGetStarted()}
     </div>
   );
 };

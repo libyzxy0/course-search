@@ -3,9 +3,10 @@ import toast, { Toaster } from "react-hot-toast";
 import loginmockup from "@/assets/4957412_Mobile-login.svg";
 import { useState } from "react";
 import { Eye, EyeOff, Loader } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 const Login = () => {
+  const navigate = useNavigate();
   const { signup, error, user } = useAuth();
   const [show, setShow] = useState(false);
   const [showc, setShowC] = useState(false);
@@ -16,13 +17,31 @@ const Login = () => {
   const [lastName, setLastName] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     const cred = { firstName, lastName, email, password };
     console.log("Value:", cred);
-    setLoading(true);
-    setTimeout(() => {
+    try {
+      if(password != confirmPassword) {
+        return toast.error("Please confirm your password!");
+      }
+      setLoading(true);
+      await signup(firstName, lastName, email, password);
+      if (!error) {
+        toast.success("Account created successfully!");
+        setPassword("");
+        setEmail("");
+        setTimeout(() => {
+          navigate('/dashboard')
+        }, 3000)
+      } else {
+        toast.error("Failed to create account [2721]");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to create account [4538]");
+    } finally {
       setLoading(false);
-    }, 3000);
+    }
   };
 
   return (

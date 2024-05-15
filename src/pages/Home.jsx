@@ -21,7 +21,7 @@ const Home = () => {
           </p>
 
           <div className="w-full md:mx-6 flex justify-center mt-7 md:justify-start">
-            <Link to="dashboard">
+            <Link to="survey?loc=survey">
               <button className="outline-none border-none bg-emerald-400 rounded-lg py-3 px-12 font-bold text-white">
                 Get Started
               </button>
