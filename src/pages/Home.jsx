@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <>
     <Navbar />
-      <section className="h-screen w-full bg-white flex flex-col md:flex-row">
+      <section className="h-[calc(100vh - 80px)] w-full bg-white flex items-center flex-col md:flex-row">
         <div className="w-full md:w-[50%] text-center md:text-left mt-16 md:mt-20 md:mx-8">
            
           <h1 className="md:mx-6 font-stylish text-gray-800 text-4xl font-bold"><b className="text-emerald-400">Discover</b> Your Path to <b className="text-emerald-400">Success</b> Where <b className="text-emerald-400">Education</b> Meets <b className="text-emerald-400">Opportunity</b></h1>
