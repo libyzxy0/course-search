@@ -32,7 +32,7 @@ const Login = () => {
     </header>
     <div className="h-screen w-full bg-white flex flex-col md:flex-row md:justify-between">
     
-      <div className="pt-16 md:pt-20 flex flex-col w-full md:w-[50%]">
+      <div className="pt-10 md:pt-10 flex flex-col w-full md:w-[50%]">
       
         <div className="flex flex-col mx-8">
           <label className="font-medium text-gray-700">First Name</label>
@@ -85,8 +85,9 @@ const Login = () => {
       </div>
     </div>
     <Toaster 
-    position="top-right"
-    reverseOrder={false} />
+      position="top-right"
+      reverseOrder={ false }
+    />
     </>
   )
 }
