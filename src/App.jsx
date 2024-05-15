@@ -14,10 +14,10 @@ function App() {
       <AuthProvider>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<Signup />} />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="survey" element={<Survey />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/survey" element={<Survey />} />
         </Routes>
       </AuthProvider>
     </>
