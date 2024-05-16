@@ -1,11 +1,12 @@
-import { Outlet, Navigate, useSearchParams } from 'react-router-dom'
+import { Outlet, Navigate, useSearchParams, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth';
 import { Shell } from 'lucide-react'
 
 const PrivateRoutes = () => {
   const { user, loading } = useAuth();
+  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-  const search = searchParams.get("loc")
+  const search =  searchParams.get("loc") === null ? (location.pathname.split("/"))[1] : searchParams.get("loc");
   if (loading) {
     return (
       <div className="min-h-[85vh] w-full flex justify-center items-center">

@@ -17,21 +17,21 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const handleSignIn = async () => {
-    const cred = { email, password };
     setLoading(true);
     try {
       const u = await login(email, password);
-      console.log(u);
       if (!error) {
         toast.success("Successfully logged in as " + u.providerUid);
         setPassword("");
         setEmail("");
-        navigate(`/${search}`);
+        setTimeout(() => {
+          window.location.href = search;
+        }, 1000)
       } else {
         toast.error("Login failed check your credentials [2771]");
       }
     } catch (error) {
-      toast.error("Login failed check your credentials [2838]");
+      toast.error("Error something went wrong [2838]");
     }
     setLoading(false);
   };
@@ -44,8 +44,7 @@ const Login = () => {
     <>
       <header className="mx-8 pt-20">
         <h1 className="text-gray-700 text-3xl font-bold">
-          Sign In | <b className="text-emerald-400">Course</b>search
-        </h1>
+          Sign In | <b className="text-emerald-400">Course</b>search</h1>
       </header>
       <div className="h-screen w-full bg-white flex flex-col md:flex-row md:justify-between">
         <div className="pt-16 md:pt-24 flex flex-col w-full md:w-[50%]">
@@ -88,7 +87,7 @@ const Login = () => {
           </div>
           <h1 className="text-center mt-6 text-gray-600">
             Don't have an account?{" "}
-            <Link className="text-emerald-400 hover:underline" to="/signup">
+            <Link className="text-emerald-400 hover:underline" to={`/signup?loc=${search}`}>
               Sign up
             </Link>
           </h1>

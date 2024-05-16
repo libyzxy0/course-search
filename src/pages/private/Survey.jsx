@@ -4,6 +4,7 @@ import completedmockup from "@/assets/10946094_4611763.svg";
 import { useNavigate } from "react-router-dom";
 import edumockup from "@/assets/mockup-freepik-education.jpg";
 import { useAuth } from '@/hooks/useAuth'
+import { useGemini } from '@/hooks/useGemini'
 
 const Survey = () => {
   const { user } = useAuth();
@@ -13,7 +14,9 @@ const Survey = () => {
   const [isFinished, setFinished] = useState(false);
   const [collected, setCollected] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const [surveyStarted, setSurveyStarted] = useState(false); // New state to track if the survey has started
+  const [surveyStarted, setSurveyStarted] = useState(false);
+  const { loading, error, data: possibleCourses, analyzeSurvey } = useGemini();
+  
 
   useEffect(() => {
     const focusableElement = document.querySelector(".focusable");
@@ -21,6 +24,17 @@ const Survey = () => {
       focusableElement.focus();
     }
   }, [currentQuestionIndex, isFinished]);
+
+  useEffect(() => {
+    if (isFinished) {
+      analyzeSurvey(collected).then((result) => {
+        
+        /* THIS BLOCK OF CODE RETURNING THE RESULT STORE THIS INTO DATABASE */
+        console.log("POSIBLE COURSES:", possibleCourses);
+        /* STORE IT TO APPWRITE DATABASE  BECAUSE I DONT KNOW HOW */
+      });
+    }
+  }, [isFinished, collected, possibleCourses]);
 
   const handleStartSurvey = () => {
     setSurveyStarted(true);
@@ -75,6 +89,13 @@ const Survey = () => {
   const renderQuestion = () => {
     const currentQuestion = data[currentQuestionIndex];
     if (isFinished) {
+      if (loading) {
+        return (
+          <div className="w-full flex justify-center items-center">
+            Loading data...
+          </div>
+        );
+      }
       return (
         <div className="w-full flex text-center justify-center items-center flex-col mx-6">
           <div className="w-72">

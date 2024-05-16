@@ -24,6 +24,9 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
+      if(user) {
+        await logout();
+      }
       const session = await account.createEmailPasswordSession(email, password);
       setError("");
       return session;
