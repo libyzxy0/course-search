@@ -5,10 +5,12 @@ import { useNavigate } from "react-router-dom";
 import edumockup from "@/assets/mockup-freepik-education.jpg";
 import { useAuth } from '@/hooks/useAuth'
 import { useGemini } from '@/hooks/useGemini'
+import { useCourse } from '@/hooks/useCourse'
 
 const Survey = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { createCourse, loading: loadingCourse, error: courseError } = useCourse();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [isFinished, setFinished] = useState(false);
@@ -27,14 +29,16 @@ const Survey = () => {
 
   useEffect(() => {
     if (isFinished) {
-      analyzeSurvey(collected).then((result) => {
-        
-        /* THIS BLOCK OF CODE RETURNING THE RESULT STORE THIS INTO DATABASE */
-        console.log("POSIBLE COURSES:", possibleCourses);
-        /* STORE IT TO APPWRITE DATABASE  BECAUSE I DONT KNOW HOW */
+      analyzeSurvey(collected).then(async(result) => {
+        if(possibleCourses["possible-courses"]) {
+          for(let i = 0;i < possibleCourses["possible-courses"].length;i++) {
+          let c = possibleCourses["possible-courses"][i];
+          await createCourse(c, user.$id);
+        } 
+        }
       });
     }
-  }, [isFinished, collected, possibleCourses]);
+  }, [isFinished]);
 
   const handleStartSurvey = () => {
     setSurveyStarted(true);
@@ -92,7 +96,7 @@ const Survey = () => {
       if (loading) {
         return (
           <div className="w-full flex justify-center items-center">
-            Loading data...
+            Analyzing please wait...
           </div>
         );
       }
@@ -118,11 +122,13 @@ const Survey = () => {
     }
 
     return (
-      <div className="w-full flex text-center justify-center flex-col mx-6">
-        <h1 className="text-gray-700 font-bold text-2xl mx-2 flex flex-row mb-5">
-          <b className="text-emerald-400">{currentQuestionIndex + 1})</b>
+      <div className="w-full flex flex-col mx-6">
+        <h1 className="text-gray-700 font-bold text-2xl flex flex-row">
+          <b className="text-emerald-400 mr-2">Q{currentQuestionIndex + 1}:</b>{' '}
           {currentQuestion.question}
         </h1>
+        <p className="text-gray-600 mt-3 mb-5">{currentQuestion.hint}</p>
+        <div className="flex flex-col items-center justify-center">
         {Array.isArray(currentQuestion.choices) ? (
           <div className="w-full flex flex-col">
             {currentQuestion.choices.map((choice, index) => (
@@ -149,10 +155,11 @@ const Survey = () => {
               onClick={handleInputProceed}
               className="px-6 w-full py-2.5 rounded-lg bg-emerald-400 border-none font-medium text-white mt-3 truncate hover:bg-emerald-500 transition-all duration-300 focusable"
             >
-              Proceed
+              Continue
             </button>
           </div>
         )}
+      </div>
       </div>
     );
   };
@@ -167,7 +174,7 @@ const Survey = () => {
           Hello {(user.name.split(" "))[0]}! Ready?
         </h1>
         <p className="text-gray-600 mt-3">
-          Let us know what will be the course suitable for you by answering this servey!
+          Let us know what will be the course suitable for you by answering this survey!
         </p>
         <button
           onClick={handleStartSurvey}

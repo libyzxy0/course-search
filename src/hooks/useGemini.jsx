@@ -29,7 +29,7 @@ const useGemini = () => {
         "Course 2" 
       ]
       
-      IF error return a json with a error key and in vue describe the error in analysis or If its overloaded 
+      IF error return a json with a error key and in vue describe the error in analysis.
       [END IMPORTANT NOTE]
     `;
     
