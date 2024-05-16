@@ -30,13 +30,13 @@ const Survey = () => {
   useEffect(() => {
     if (isFinished) {
       analyzeSurvey(collected).then(async(result) => {
-        if(possibleCourses && !possibleCourses.error) {
+        if(possibleCourses && !possibleCourses?.error) {
           for(let i = 0;i < possibleCourses["possible-courses"].length;i++) {
           let c = possibleCourses["possible-courses"][i];
           await createCourse(c, user.$id);
         } 
         } else {
-          alert(possibleCourses.error)
+          alert(possibleCourses?.error)
         }
       });
     }
