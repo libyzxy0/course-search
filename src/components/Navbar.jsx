@@ -1,5 +1,5 @@
 import { AlignJustify, X } from "lucide-react";
-import { useAuth } from '@/hooks/useAuth'
+import { useAuth } from "@/hooks/useAuth";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { cn } from "@/utils/cn";
@@ -37,9 +37,9 @@ const Navbar = ({ className }) => {
           <li className="font-medium text-lg text-gray-600 mx-3 hover:text-emerald-400 transition-all duration-300">
             Developers
           </li>
-          <Link to={ user ? '/dashboard' : '/signup'}>
+          <Link to={user ? "/dashboard" : "/signup"}>
             <button className="bg-emerald-400 rounded-lg px-4 py-2 font-medium text-white mx-2">
-              { user ? "Dashboard" : "Sign up" }
+              {user ? "Dashboard" : "Sign up"}
             </button>
           </Link>
         </ul>
@@ -56,9 +56,9 @@ const Navbar = ({ className }) => {
         <li className="hover:bg-gray-100 py-1.5 rounded-md w-full transition-all duration-300 text-center font-medium text-lg text-gray-600 my-1 hover:text-emerald-400 transition-all duration-300">
           Developers
         </li>
-        <Link to={ user ? '/dashboard' : '/signup'} className="w-full">
+        <Link to={user ? "/dashboard" : "/signup"} className="w-full">
           <button className="w-full bg-emerald-400 rounded-lg px-4 py-2 font-medium text-white my-2">
-            { user ? "Dashboard" : "Sign up" }
+            {user ? "Dashboard" : "Sign up"}
           </button>
         </Link>
       </ul>

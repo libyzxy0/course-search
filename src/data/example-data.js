@@ -1,172 +1,174 @@
 export const data = [
   {
     id: 1,
-    category: "Personal Interests",
-    question: "What hobbies or activities do you enjoy?",
+    category: "Mga Hilig sa Personal",
+    question: "Ano ang trip mong gawin kapag walang pasok?",
     choices: "input",
-    hint: "Ito ay tumutukoy sa mga gawain o libangan na madalas mong ginagawa o natutuwa ka kapag ginagawa mo."
+    hint: "Ito'y tungkol sa mga bagay na gusto mong gawin sa iyong libreng oras.",
   },
   {
     id: 2,
-    category: "Preferred Learning Styles",
-    question: "How do you prefer to learn best?",
+    category: "Paboritong Paraan ng Pag-aaral",
+    question: "Paano mo gustong mag-aral?",
     choices: [
-      "Listening to lectures",
-      "Doing hands-on activities",
-      "Participating in discussions",
-      "Taking online courses",
+      "Pakinggan ang mga paliwanag ng iba",
+      "Gumawa ng mga praktikal na aktibidad",
+      "Makipag-usap at magbahagi ng ideya sa iba",
+      "Kumuha ng mga klase online",
     ],
-    hint: "Ito ay tumutukoy sa mga paraan kung paano ka pinakamahusay na natututo."
+    hint: "Ito'y tungkol kung paano mo mas pinapadali ang iyong pag-aaral.",
   },
   {
     id: 3,
-    category: "Work Environment Preferences",
-    question: "What kind of work environment do you prefer?",
+    category: "Mga Paboritong Environment sa Trabaho",
+    question: "Anong klase ng environment sa trabaho ang gusto mo?",
     choices: [
-      "Fast-paced and dynamic",
-      "Structured and organized",
-      "Collaborative and creative",
-      "Quiet and focused",
+      "Mabilis at abala",
+      "Organisado at maayos",
+      "Nagtatrabaho kasama ang iba at malikhaing",
+      "Tahimik at nakatuon",
     ],
-    hint: "Ito ay nagtatanong kung sa anong uri ng kapaligiran sa trabaho ka pinakakomportable o pinipili mong magtrabaho."
+    hint: "Ito'y tungkol sa kung saan mo gustong magtrabaho.",
   },
   {
     id: 4,
-    category: "Academic Strengths",
-    question: "In which subjects or topics do you excel?",
+    category: "Mga Lakas sa Akademiko",
+    question: "Anong mga subject o paksa ang magaling ka?",
     choices: "input",
-    hint: "Ito ay nagtatanong kung sa anong mga paksa o topiko ka magaling o mahusay."
+    hint: "Ito'y tungkol sa mga paksa o topic na magaling ka o mahusay.",
   },
   {
     id: 5,
-    category: "Personal Fulfillment",
-    question: "Describe a project or task that made you feel proud and why.",
+    category: "Personal na Tagumpay",
+    question:
+      "Pwedeng bang i-describe mo ang isang proyekto o gawain na nagpapakilig sa 'yo?",
     choices: "input",
-    hint: "Ito ay humihingi ng pagsasalarawan sa isang proyekto o gawain na nagpaparamdam sa iyo ng pagmamalaki at kung bakit."
+    hint: "Ito'y tungkol sa isang proyektong nagtagumpay ka at bakit.",
   },
   {
     id: 6,
-    category: "Overcoming Challenges",
-    question: "How do you deal with difficult situations or setbacks?",
+    category: "Paghaharap sa mga Hamon",
+    question: "Paano mo hinaharap ang mga mahihirap na sitwasyon?",
     choices: "input",
-    hint: "Ito ay humihingi ng iyong paraan ng pagharap sa mga mahihirap na sitwasyon o mga hadlang."
+    hint: "Ito'y tungkol sa iyong paraan ng pagharap sa mga mahihirap na sitwasyon o mga hadlang.",
   },
   {
     id: 7,
-    category: "Academic Interests",
-    question: "Which subjects are you interested in studying?",
+    category: "Ibang Gawain sa Labas ng Paaralan",
+    question: "Nakikilahok ka ba sa ibang gawain sa labas ng paaralan?",
     choices: [
-      "Science, Technology, Engineering, and Mathematics (STEM)",
-      "Business and Management",
-      "Information and Communications Technology (ICT)",
-      "Arts and Design",
-      "Humanities and Social Sciences",
+      "Sports",
+      "Musika",
+      "Sining",
+      "Pagtulong sa iba",
+      "Mga klase (tulad ng debate, science, atbp.)",
     ],
-    hint: "Ito ay nagtatanong kung aling mga paksa sa akademiko ang nais mong pag-aralan o interesado ka."
+    hint: "Ito'y tungkol sa mga aktibidad na kasali ka sa labas ng paaralan.",
   },
   {
     id: 8,
-    category: "Career Goals",
-    question: "What job or career do you dream of having in the future?",
+    category: "Mga Pangarap sa Karera",
+    question: "Anong trabaho o karera ang pangarap mong marating sa hinaharap?",
     choices: "input",
-    hint: "Ito ay nagtatanong tungkol sa iyong mga pangarap na trabaho o karera sa hinaharap."
+    hint: "Ito'y tungkol sa trabaho o karera na ninanais mong marating.",
   },
   {
     id: 9,
-    category: "Interest in Industries",
-    question: "Which industries or fields are you most curious about?",
+    category: "Interes sa mga Industriya",
+    question: "Aling mga industriya o larangan ang pinaka-interesado ka?",
     choices: "input",
-    hint: "Ito ay nagtatanong kung aling mga industriya o larangan ang pinakagusto mong alamin."
+    hint: "Ito'y tungkol sa mga industriya o larangang nais mong alamin.",
   },
   {
     id: 10,
-    category: "Ideal Career Path",
-    question: "How do you imagine your ideal career unfolding?",
+    category: "Inaasahang Landas sa Karera",
+    question: "Paano mo ini-imagine ang iyong ideal na landas sa karera?",
     choices: "input",
-    hint: "Ito ay nagtatanong kung paano mo inaasahang mag-unfold ang iyong ideal na karera."
+    hint: "Ito'y tungkol sa kung paano mo inaasahan na mag-unfold ang iyong ideal na karera.",
   },
   {
     id: 11,
-    category: "Motivation for Success",
-    question: "What drives you to succeed?",
+    category: "Motibasyon sa Tagumpay",
+    question: "Ano ang nagmamaneho sa 'yo para magtagumpay?",
     choices: "input",
-    hint: "Ito ay nagtatanong kung ano ang nagpapdrive sa iyo para magtagumpay."
+    hint: "Ito'y tungkol sa anong nagpapagana sa iyo para magtagumpay.",
   },
   {
     id: 12,
-    category: "Work Experience",
+    category: "Karanasan sa Trabaho",
     question:
-      "Have you had any previous work experience or internships? If yes, please describe.",
+      "Nakaranas ka na ba ng mga trabaho o internship dati? Kung oo, maari mo ba itong i-describe?",
     choices: "input",
-    hint: "Ito ay nagtatanong kung mayroon ka na bang anumang dating karanasan sa trabaho o internship. Kung oo, mangyaring ilarawan."
+    hint: "Ito'y tungkol sa iyong nakaraang karanasan sa trabaho o internship.",
   },
   {
     id: 13,
-    category: "Interpersonal Skills",
-    question: "How would you describe your communication and teamwork skills?",
+    category: "Interpersonal na Kakayahan",
+    question:
+      "Paano mo ilalarawan ang iyong mga kasanayan sa komunikasyon at teamwork?",
     choices: "input",
-    hint: "Ito ay humihingi ng pagsasalarawan sa iyong mga kasanayan sa komunikasyon at pagtatrabaho sa team."
+    hint: "Ito'y tungkol sa iyong kakayahan sa pakikipag-ugnayan at pagtatrabaho sa team.",
   },
   {
     id: 14,
-    category: "Leadership Experience",
+    category: "Karanasan sa Pamumuno",
     question:
-      "Have you ever taken on a leadership role? If yes, describe your experience.",
+      "Nakagamit ka na ba ng pagiging lider? Kung oo, maari mo ba itong i-describe?",
     choices: "input",
-    hint: "Ito ay humihingi kung ikaw ay kailanman nagtanggap ng isang tungkulin sa pamumuno. Kung oo, ilarawan ang iyong karanasan."
+    hint: "Ito'y tungkol kung ikaw ay kailanman nagtanggap ng isang tungkulin sa pamumuno.",
   },
   {
     id: 15,
-    category: "Problem-Solving Abilities",
+    category: "Kakayahan sa Paglutas ng Problema",
     question:
-      "Can you provide an example of a problem you've solved creatively?",
+      "Pwedeng magbigay ka ng halimbawa ng isang problema na iyong naresolba nang may katalinuhan?",
     choices: "input",
-    hint: "Ito ay humihingi ng halimbawa ng isang problema na iyong naisugpo nang may katalinuhan."
+    hint: "Ito'y tungkol sa isang problema na iyong naisugpo nang may katalinuhan.",
   },
   {
     id: 16,
-    category: "Future Education Plans",
+    category: "Mga Plano sa Edukasyon sa Hinaharap",
     question:
-      "Do you plan to pursue further education beyond your current level of study?",
-    choices: ["Yes", "No", "Undecided"],
-    hint: "Ito ay nagtatanong kung plano mo bang magpatuloy sa mas mataas na antas ng edukasyon sa iyong kasalukuyang antas ng pag-aaral."
+      "Plano mo bang magpatuloy sa mas mataas na antas ng edukasyon sa hinaharap?",
+    choices: ["Oo", "Hindi", "Hindi pa sigurado"],
+    hint: "Ito'y tungkol sa iyong plano sa edukasyon.",
   },
   {
     id: 17,
-    category: "Preferred Work Schedule",
-    question: "What type of work schedule do you prefer?",
+    category: "Preperensya sa Oras ng Trabaho",
+    question: "Anong klase ng oras sa trabaho ang gusto mo?",
     choices: [
       "9-5 office hours",
-      "Flexible hours",
+      "May pagkakataon na mag-adjust",
       "Shift work",
-      "Remote work",
+      "Trabaho sa layo",
     ],
-    hint: "Ito ay nagtatanong kung aling uri ng oras sa trabaho ang iyong pinapaboran."
+    hint: "Ito'y tungkol sa iyong paboritong oras sa trabaho.",
   },
   {
     id: 18,
-    category: "Long-Term Aspirations",
-    question: "Where do you see yourself in 5 years?",
+    category: "Mahabang-Term na Mithiin",
+    question: "Saan mo nakikita ang iyong sarili sa loob ng 5 taon?",
     choices: "input",
-    hint: "Ito ay nagtatanong kung saan mo nakikita ang iyong sarili sa loob ng 5 taon."
+    hint: "Ito'y tungkol sa iyong mga mithiin sa hinaharap.",
   },
   {
     id: 19,
-    category: "Native Language",
-    question: "What is your native language?",
+    category: "Wika ng Katutubo",
+    question: "Anong wika ang iyong katutubong salita?",
     choices: "input",
-    hint: "Ito ay nagtatanong kung ano ang iyong katutubong wika."
+    hint: "Ito'y tungkol sa iyong unang wika.",
   },
   {
     id: 20,
-    category: "High School Strand",
-    question: "Which high school strand did you pursue?",
+    category: "Strand sa Mataas na Paaralan",
+    question: "Aling strand sa mataas na paaralan ang iyong kinuha?",
     choices: [
-      "STEM (Science, Technology, Engineering, and Mathematics)",
-      "ABM (Accountancy, Business, and Management)",
-      "HUMSS (Humanities and Social Sciences)",
+      "STEM (Science, Technology, Engineering, at Mathematics)",
+      "ABM (Accountancy, Business, at Management)",
+      "HUMSS (Humanities at Social Sciences)",
       "GAS (General Academic Strand)",
     ],
-    hint: "Ito ay nagtatanong kung aling high school strand ang iyong kinuha."
+    hint: "Ito'y tungkol sa iyong paksa ng fokus sa mataas na paaralan.",
   },
 ];

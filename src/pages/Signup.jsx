@@ -7,7 +7,7 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 const Signup = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const search = searchParams.get("loc")
+  const search = searchParams.get("loc");
   const navigate = useNavigate();
   const { signup, error, user } = useAuth();
   const [show, setShow] = useState(false);
@@ -23,7 +23,7 @@ const Signup = () => {
     const cred = { firstName, lastName, email, password };
     console.log("Value:", cred);
     try {
-      if(password != confirmPassword) {
+      if (password != confirmPassword) {
         return toast.error("Please confirm your password!");
       }
       setLoading(true);
@@ -33,8 +33,8 @@ const Signup = () => {
         setPassword("");
         setEmail("");
         setTimeout(() => {
-          window.location.href = '/' + search;
-        }, 3000)
+          window.location.href = "/" + search;
+        }, 3000);
       } else {
         toast.error("Failed to create account [2721]");
       }
@@ -139,7 +139,10 @@ const Signup = () => {
           </div>
           <h1 className="text-center mt-6 text-gray-600">
             Already have an account?{" "}
-            <Link className="text-emerald-400 hover:underline" to="/login?loc=signup">
+            <Link
+              className="text-emerald-400 hover:underline"
+              to="/login?loc=signup"
+            >
               Sign In
             </Link>
           </h1>

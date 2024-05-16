@@ -9,7 +9,7 @@ import { useAuth } from "@/hooks/useAuth";
 const Login = () => {
   const { googleSignIn, login, user, error } = useAuth();
   const [searchParams, setSearchParams] = useSearchParams();
-  const search = searchParams.get("loc")
+  const search = searchParams.get("loc");
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState("");
@@ -26,7 +26,7 @@ const Login = () => {
         setEmail("");
         setTimeout(() => {
           window.location.href = search;
-        }, 1000)
+        }, 1000);
       } else {
         toast.error("Login failed check your credentials [2771]");
       }
@@ -44,7 +44,8 @@ const Login = () => {
     <>
       <header className="mx-8 pt-20">
         <h1 className="text-gray-700 text-3xl font-bold">
-          Sign In | <b className="text-emerald-400">Course</b>search</h1>
+          Sign In | <b className="text-emerald-400">Course</b>search
+        </h1>
       </header>
       <div className="h-screen w-full bg-white flex flex-col md:flex-row md:justify-between">
         <div className="pt-16 md:pt-24 flex flex-col w-full md:w-[50%]">
@@ -87,7 +88,10 @@ const Login = () => {
           </div>
           <h1 className="text-center mt-6 text-gray-600">
             Don't have an account?{" "}
-            <Link className="text-emerald-400 hover:underline" to={`/signup?loc=${search}`}>
+            <Link
+              className="text-emerald-400 hover:underline"
+              to={`/signup?loc=${search}`}
+            >
               Sign up
             </Link>
           </h1>
