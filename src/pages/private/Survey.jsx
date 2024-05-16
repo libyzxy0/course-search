@@ -29,16 +29,18 @@ const Survey = () => {
 
   useEffect(() => {
     if (isFinished) {
-      analyzeSurvey(collected).then(async(result) => {
-        if(possibleCourses && !possibleCourses?.error) {
+      const wr = async () => {
+        try {
+          await analyzeSurvey(collected);
           for(let i = 0;i < possibleCourses["possible-courses"].length;i++) {
-          let c = possibleCourses["possible-courses"][i];
-          await createCourse(c, user.$id);
-        } 
-        } else {
-          alert(possibleCourses?.error)
+            let c = possibleCourses["possible-courses"][i];
+            await createCourse(c, user.$id);
+          } 
+        } catch (error) {
+          console.log(error)
         }
-      });
+      }
+      wr();
     }
   }, [isFinished]);
 
@@ -98,7 +100,7 @@ const Survey = () => {
       if (loading) {
         return (
           <div className="w-full flex justify-center items-center">
-            Analyzing please wait...
+            <h1 className="animate-spin text-3xl font-bold">Analyzing please wait...</h1>
           </div>
         );
       }
