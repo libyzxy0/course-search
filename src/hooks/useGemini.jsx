@@ -23,7 +23,7 @@ const useGemini = () => {
       Hello, I want you to analyze the user answers on questions and give me at most 5 possible courses. Make it accurate based on the output on answer { question, answer } key.
       [END ANALYSIS PROMPT]\n\n
       [START IMPORTANT NOTE]
-      You must return a stringified JSON. Make it JSON format, just plain. Don't add any other data. Give me the array of possible courses. Example:
+      You must return a stringified JSON Array. Make it JSON array format, just plain. Don't add any other data. Give me the array. Example:
       [
         "Course 1", 
         "Course 2" 

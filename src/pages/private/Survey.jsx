@@ -18,6 +18,7 @@ const Survey = () => {
   const [inputValue, setInputValue] = useState("");
   const [surveyStarted, setSurveyStarted] = useState(false);
   const { loading, error, data: possibleCourses, analyzeSurvey } = useGemini();
+  const [surveyError, setSurveyError] = useState(false);
   
 
   useEffect(() => {
@@ -32,12 +33,13 @@ const Survey = () => {
       const wr = async () => {
         try {
           await analyzeSurvey(collected);
-          for(let i = 0;i < possibleCourses["possible-courses"].length;i++) {
+          for(let i = 0;i < possibleCourses.length;i++) {
             let c = possibleCourses["possible-courses"][i];
             await createCourse(c, user.$id);
-          } 
+          }
         } catch (error) {
-          console.log(error)
+          console.log("Error completing survey:", error)
+          setSurveyError(true);
         }
       }
       wr();
@@ -192,7 +194,25 @@ const Survey = () => {
 
   return (
     <div className="min-h-[85vh] w-full flex justify-center items-center">
-      {surveyStarted ? renderQuestion() : renderGetStarted()}
+      {surveyError ? surveyStarted ? renderQuestion() : renderGetStarted() : (
+          <div className="w-full flex text-center justify-center items-center flex-col mx-6">
+          <div className="w-72">
+            <img src={completedmockup} alt="Mockup image from freepik" />
+          </div>
+          <h1 className="text-gray-700 font-bold text-3xl mx-2 mt-5">
+            Failed to analyze data!
+          </h1>
+          <p className="text-gray-500 mt-3">
+            Error while analyzing your response.
+          </p>
+          <button
+            onClick={() => navigate("/survey")}
+            className="px-6 w-full py-2.5 rounded-lg border-none font-medium mt-3 bg-emerald-400 text-gray-700 hover:bg-emerald-500 transition-all duration-300 text-white mt-5"
+          >
+            Retake Survey
+          </button>
+        </div>
+        )}
     </div>
   );
 };
